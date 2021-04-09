@@ -2,13 +2,18 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define MAX_ARR 10000000
+#define MAX_ARR1 10000
+
+    char arr[MAX_ARR];
+    char arr1[MAX_ARR1];
+
 int main()
 {
 
     FILE* fpString = fopen("string.txt","r");
     FILE* fpArray = fopen("pattern.txt","r");
-    char arr[1000];
-    char arr1[1000];
+
     char* pString = fgets(arr,100,fpString);
     char *pArray = fgets(arr1, 100, fpArray);
     strstr(arr,arr1);

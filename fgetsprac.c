@@ -5,13 +5,13 @@
 #define MAX_ARR 10000000
 #define MAX_ARR1 10000
 
-    char arr[MAX_ARR];
-    char arr1[MAX_ARR1];
+char arr[MAX_ARR];
+char arr1[MAX_ARR1];
 
+void print(FILE*, int*);
 
 int main()
 {
-
     FILE* fpString = fopen("string.txt","r");
     FILE* fpArray = fopen("pattern.txt","r");
     FILE* fpResult = fopen("result_naive.txt","w");
@@ -26,7 +26,7 @@ int main()
     }
 
     char* pString = fgets(arr,100,fpString);
-    char *pArray = fgets(arr1, 100, fpArray);
+    char* pArray = fgets(arr1, 100, fpArray);
 
     int i,j,start = 0;
 
@@ -46,19 +46,21 @@ int main()
                 printarr[index] = start;
             }
     }
-    if(fpResult != NULL){
-    fprintf(fpResult,"%d\n",printarr[0]);
-    for(int i = 1; i <= printarr[0]; i++)
-        fprintf(fpResult,"%d ",printarr[i]);
-    }
-    fprintf(fpResult,"\n");
-    printf("Saved on result_naive.txt\n");
 
+    print(fpResult,printarr);
 
-    fclose(pString);
-    fclose(pArray);
+    fclose(fpString);
+    fclose(fpArray);
     fclose(fpResult);
     free(printarr);
 
     return 0;
+}
+void print(FILE *fpResult, int* printarr)
+{
+    fprintf(fpResult,"%d\n",printarr[0]);
+    for(int i = 1; i <= printarr[0]; i++)
+        fprintf(fpResult,"%d ",printarr[i]);
+    fprintf(fpResult,"\n");
+    printf("Saved on result_naive.txt\n");
 }

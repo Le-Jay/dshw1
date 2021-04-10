@@ -37,7 +37,6 @@ int main()
 
     failarr();
 
- printf("\n");
     int i = 0, j = 0;
     int index = 0;
     int* printarr = (int*)malloc(sizeof(int));
@@ -82,13 +81,16 @@ void print(FILE *fpResult, int* printarr)
 //kmp - failfunc
 void failarr(){
 /* compute pattern's failure function */
- int i, j =0;
-failure[0] = -1;
+    int j =0;
+    int i = -1;
+    failure[0] = -1;
 
-for(j=1; j<lenp; j++) {
- i = failure[j-1];
-while((arr1[j] != arr1[i+1]) && (i >= 0)) i = failure[i];
-if(arr1[j] == arr1[i+1]) failure[j] = i+1;
-    else failure[j] = -1;
+    for(j=1; j<lenp; j++) {
+        i = failure[j-1];
+        while((arr1[j] != arr1[i+1]) && (i >= 0))
+            i = failure[i];
+        if(arr1[j] == arr1[i+1])
+            failure[j] = i+1;
+        else failure[j] = -1;
  }
 }

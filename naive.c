@@ -25,8 +25,8 @@ int main()
         return 0;
     }
 
-    char* pString = fgets(arr,100,fpString);
-    char* pArray = fgets(arr1, 100, fpArray);
+    char* pString = fgets(arr,MAX_ARR,fpString);
+    char* pArray = fgets(arr1,MAX_ARR1, fpArray);
 
     int i,j,start = 0;
 
